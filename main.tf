@@ -1,11 +1,17 @@
+module "enabled" {
+  source  = "devops-workflow/boolean/local"
+  version = "0.1.1"
+  value   = "${var.enabled}"
+}
+
 data "aws_route53_zone" "default" {
-  count   = "${signum(length(compact(var.aliases)))}"
+  count   = "${module.enabled.value ? signum(length(compact(var.aliases))) : 0}"
   zone_id = "${var.parent_zone_id}"
   name    = "${var.parent_zone_name}"
 }
 
 resource "aws_route53_record" "default" {
-  count   = "${length(compact(var.aliases))}"
+  count   = "${module.enabled.value ? length(compact(var.aliases)) : 0}"
   zone_id = "${data.aws_route53_zone.default.zone_id}"
   name    = "${element(compact(var.aliases), count.index)}"
   type    = "A"
