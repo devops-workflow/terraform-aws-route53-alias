@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/devops-workflow/terraform-aws-route53-alias?style=svg)](https://circleci.com/gh/devops-workflow/terraform-aws-route53-alias)
+[![CircleCI](https://circleci.com/gh/devops-workflow/terraform-aws-route53-alias.svg?style=svg)](https://circleci.com/gh/devops-workflow/terraform-aws-route53-alias)
 
 # terraform-aws-route53-alias
 
